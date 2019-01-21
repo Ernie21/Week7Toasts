@@ -1,8 +1,9 @@
 package edu.rvc.student.week7
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
@@ -27,6 +28,13 @@ class MainActivity : AppCompatActivity() {
             txtMessage.setText("")
             //Set focus back on txtMessage
             txtMessage.requestFocus()
+        }
+
+        //Fire hidekeyboard when user taps outside any text object
+//Place below code right before last right bracket in function onCreate
+        findViewById<View>(android.R.id.content).setOnTouchListener { _, event ->
+            hideKeyboard()
+            false
         }
     }
     fun hideKeyboard() {
